@@ -15,6 +15,8 @@
 		<ch.qos.logback-version>1.0.13</ch.qos.logback-version>
 		<org.thymeleaf-version>2.1.2.RELEASE</org.thymeleaf-version>
 		<org.thymeleaf.extras.springsecurity3-version>2.1.1.RELEASE</org.thymeleaf.extras.springsecurity3-version>
+		<camel.version>2.13.0</camel.version>
+		<cxf.version>2.7.10</cxf.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -207,6 +209,57 @@
 			<version>4.0</version>
 		</dependency>
 
+		<!-- camel -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring-javaconfig</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-bindy</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-cxf</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-servlet</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+
+		<!-- cxf -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901.jdbc4</version>
+		</dependency>
+
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -248,24 +301,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-spring</artifactId>
-			<version>2.13.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-spring-javaconfig</artifactId>
-			<version>2.13.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.1-901.jdbc4</version>
 		</dependency>
 
 	</dependencies>
@@ -314,6 +349,34 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.cxf</groupId> -->
+			<!-- <artifactId>cxf-codegen-plugin</artifactId> -->
+			<!-- <version>${cxf.version}</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>orders-ws-generate-sources</id> -->
+			<!-- <phase>generate-sources</phase> -->
+			<!-- <configuration> -->
+			<!-- <sourceRoot>${basedir}/src/main/java</sourceRoot> -->
+			<!-- <wsdlOptions> -->
+			<!-- <wsdlOption> -->
+			<!-- <wsdl>${basedir}/src/main/resources/wsdl/order.wsdl</wsdl> -->
+			<!-- <extraargs> -->
+			<!-- <extraarg>-validate</extraarg> -->
+			<!-- <extraarg>-p</extraarg> -->
+			<!-- <extraarg>com.smt.example.camel.orders.ws</extraarg> -->
+			<!-- </extraargs> -->
+			<!-- </wsdlOption> -->
+			<!-- </wsdlOptions> -->
+			<!-- </configuration> -->
+			<!-- <goals> -->
+			<!-- <goal>wsdl2java</goal> -->
+			<!-- </goals> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 		</plugins>
 	</build>
 </project>

@@ -12,6 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.camel.dataformat.bindy.annotation.CsvRecord;
+import org.apache.camel.dataformat.bindy.annotation.DataField;
+
 import com.google.common.base.Objects;
 
 /**
@@ -20,6 +23,7 @@ import com.google.common.base.Objects;
  */
 @Entity
 @Table(name = "orders")
+@CsvRecord(separator = ";", skipFirstLine = true)
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 758920631253473994L;
@@ -28,8 +32,10 @@ public class Order implements Serializable {
     @GeneratedValue
     private Long id;
 
+    @DataField(pos = 2)
     private int size;
 
+    @DataField(pos = 1)
     private String product;
 
     private String company;
