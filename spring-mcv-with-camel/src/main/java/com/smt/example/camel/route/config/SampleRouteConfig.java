@@ -25,11 +25,10 @@ public class SampleRouteConfig extends SingleRouteCamelConfiguration {
 
                 from("file:c:/temp/in").to("file:c:/temp/out");
 
-//                from("file:c:/temp/out").to("bean:orderService?method=saveAll");
-                from("file:c:/temp/out").beanRef("orderService", "saveAll");
+                //                from("file:c:/temp/out").to("bean:orderService?method=saveAll");
+                from("file:c:/temp/out?include=.*\\.csv").process(new OrderCsvProcessor("corporejszyn")).beanRef("orderService", "saveAll");
             }
 
         };
     }
-
 }
