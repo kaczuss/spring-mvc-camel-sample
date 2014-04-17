@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
  * @author pkaczanowski
  * @version 17 kwi 2014
  */
-@Service
-public class OrderSercive {
+@Service()
+public class OrderService {
 
     private OrderRepository orderRepository;
 
     @Autowired
-    public OrderSercive(OrderRepository orderRepository) {
+    public OrderService(OrderRepository orderRepository) {
         super();
         this.orderRepository = orderRepository;
     }
@@ -27,4 +27,7 @@ public class OrderSercive {
         return orderRepository.save(order);
     }
 
+    public void saveAll() {
+        save(new Order(3, "jakis", "adhd"));
+    }
 }

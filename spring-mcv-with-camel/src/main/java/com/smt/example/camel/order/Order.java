@@ -19,7 +19,7 @@ import com.google.common.base.Objects;
  * @version 17 kwi 2014
  */
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 758920631253473994L;
