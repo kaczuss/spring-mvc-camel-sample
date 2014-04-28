@@ -49,7 +49,7 @@ public class OrderCsvProcessor implements Processor {
                 LOG.debug("Add order {}", order);
             }
         }
-        exchange.getOut().setBody(result);
+        exchange.getIn().setBody(result);
     }
 
 }

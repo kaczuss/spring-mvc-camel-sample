@@ -31,7 +31,7 @@ public class OrderService {
     }
 
     public Order save(Order order) {
-        LOG.info("save oreder {}", order);
+        LOG.info("save order {} ", order);
         return orderRepository.save(order);
     }
 
